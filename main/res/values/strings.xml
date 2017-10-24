@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BlackJack</string>
+    <string name="menu_about">menu about</string>
+    <string name="menu_settings">menu settings</string>
+</resources>

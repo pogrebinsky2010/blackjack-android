@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <!--made a image view for the background so i could easily change transparency of just the background-->
+    <ImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/background_ace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background_ace"
+        android:alpha=".50"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hit"
+        android:id="@+id/hitButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="62dp"
+        android:onClick="hitOnClick"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hold"
+        android:id="@+id/holdButton"
+        android:onClick="holdOnClick"
+        android:layout_below="@+id/dealerCardThree"
+        android:layout_alignLeft="@+id/dealerCardFive"
+        android:layout_alignStart="@+id/dealerCardFive" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="new game"
+        android:id="@+id/newGameButton"
+        android:onClick="newGameOnClick"
+        android:layout_alignTop="@+id/holdButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/holdButton"
+        android:layout_toEndOf="@+id/holdButton" />
+
+    <ImageView
+        android:id="@+id/playerCardOne"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/hitButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <ImageView
+        android:id="@+id/playerCardTwo"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/hitButton"
+        android:layout_toRightOf="@+id/playerCardOne"
+        android:layout_toEndOf="@+id/playerCardOne" /> />
+
+    <ImageView
+        android:id="@+id/playerCardThree"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/hitButton"
+        android:layout_toRightOf="@+id/playerCardTwo"
+        android:layout_toEndOf="@+id/playerCardTwo" />
+
+    <ImageView
+        android:id="@+id/playerCardFour"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/playerCardThree"
+        android:layout_toRightOf="@+id/playerCardThree"
+        android:layout_toEndOf="@+id/playerCardThree" />
+
+    <ImageView
+        android:id="@+id/playerCardFive"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/centerCard"
+        android:layout_toRightOf="@+id/playerCardFour"
+        android:layout_toEndOf="@+id/playerCardFour" />
+    <ImageView
+        android:id="@+id/centerCard"
+        android:src="@drawable/card_back_three"
+        android:layout_width="100dp"
+        android:layout_height="300dp"
+        android:scaleType="fitCenter"
+        android:layout_above="@+id/playerCardFour"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Player Score"
+        android:id="@+id/playerScoreLabel"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_above="@+id/playerScoreTextView"
+        android:layout_toLeftOf="@+id/playerCardFive"
+        android:layout_toStartOf="@+id/playerCardFive" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="no score yet"
+        android:id="@+id/playerScoreTextView"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/centerCard"
+        android:layout_alignLeft="@+id/playerScoreLabel"
+        android:layout_alignStart="@+id/playerScoreLabel" />
+
+    <ImageView
+        android:id="@+id/dealerCardOne"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/centerCard"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/dealerCardTwo"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/dealerCardOne"
+        android:layout_toLeftOf="@+id/dealerCardOne"
+        android:layout_toStartOf="@+id/dealerCardOne" />
+
+    <ImageView
+        android:id="@+id/dealerCardThree"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/dealerCardTwo"
+        android:layout_toLeftOf="@+id/dealerCardTwo"
+        android:layout_toStartOf="@+id/dealerCardTwo" />
+
+    <ImageView
+        android:id="@+id/dealerCardFour"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/playerCardFive"
+        android:layout_toLeftOf="@+id/dealerCardThree"
+        android:layout_toStartOf="@+id/dealerCardThree" />
+
+    <ImageView
+        android:id="@+id/dealerCardFive"
+        android:src="@drawable/card_back_three"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/playerCardFour"
+        android:layout_toLeftOf="@+id/dealerCardFour"
+        android:layout_toStartOf="@+id/dealerCardFour" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="no score yet"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:id="@+id/dealerScoreTextView"
+        android:layout_alignTop="@+id/centerCard"
+        android:layout_toLeftOf="@+id/dealerCardOne"
+        android:layout_toStartOf="@+id/dealerCardOne" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Dealer Score"
+        android:id="@+id/dealerScoreLabel"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/playerScoreLabel"
+        android:layout_toRightOf="@+id/centerCard"
+        android:layout_toEndOf="@+id/centerCard" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Press to make Aces worth 11 points"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:id="@+id/acesHighButton"
+        android:checked="false"
+        android:layout_below="@+id/holdButton"
+        android:layout_toRightOf="@+id/hitButton"
+        android:layout_toEndOf="@+id/hitButton"
+        android:onClick="highAcesOnClick" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Press to make Aces worth 1 points"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:id="@+id/acesLowButton"
+        android:checked="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/dealerCardThree"
+        android:layout_alignEnd="@+id/dealerCardThree"
+        android:layout_alignLeft="@+id/acesHighButton"
+        android:layout_alignStart="@+id/acesHighButton"
+        android:onClick="lowAcesOnClick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deal"
+        android:id="@+id/dealButton"
+        android:layout_below="@+id/playerCardThree"
+        android:layout_toRightOf="@+id/hitButton"
+        android:layout_toEndOf="@+id/hitButton"
+        android:onClick="dealOnClick" />
+
+</RelativeLayout>

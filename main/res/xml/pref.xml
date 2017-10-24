@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="winning_score"
+        android:title="Winning Score"
+        android:summary="Score players much get closer to in order to win."
+        android:inputType="number"/>
+
+</PreferenceScreen>
