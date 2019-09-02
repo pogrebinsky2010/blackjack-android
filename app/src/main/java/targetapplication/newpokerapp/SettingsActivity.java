@@ -1,16 +1,13 @@
-package talaba.blackjack.com.blackjack;
-
-/**
+package targetapplication.newpokerapp; /**
  * Created by talaba on 7/17/16.
  */
 
+import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
 /**
  * Created by Talaba Pogrebinsky
  */
-
-        import android.os.Bundle;
 
 public class SettingsActivity extends PreferenceActivity {
 

@@ -1,6 +1,4 @@
-package talaba.blackjack.com.blackjack;
-
-/**
+package targetapplication.newpokerapp; /**
  * Created by talaba on 7/17/16.
  */
 

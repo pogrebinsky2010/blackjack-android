@@ -1,4 +1,4 @@
-package talaba.blackjack.com.blackjack;
+package targetapplication.newpokerapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,7 +21,8 @@ import android.widget.TextView.OnEditorActionListener;
 /**
  * Created by talaba on 7/11/16.
  */
-public class Blackjack extends AppCompatActivity implements OnEditorActionListener, SharedPreferences.OnSharedPreferenceChangeListener{
+public class Blackjack extends AppCompatActivity implements OnEditorActionListener, SharedPreferences.OnSharedPreferenceChangeListener
+{
 
     private Toolbar  toolbar;
     TextView playerScoreTextView;
@@ -72,7 +73,8 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
     private int dealerFifthCard = -1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.black_jack);
 
@@ -127,14 +129,16 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
 
     //display menu
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.black_jack, menu);
         return true;
     }
 
     //define option items actions
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         switch (item.getItemId()) {
             case R.id.menu_settings:
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
@@ -155,7 +159,7 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
     {
         //saving instance variables
         Editor editor = savedValues.edit();
-       // editor.putInt("index", game.getIndex());
+        // editor.putInt("index", game.getIndex());
         editor.putInt("dealerScore", game.getDealerScore());
         editor.putInt("playerScore", game.getPlayerScore());
         editor.putInt("playerFirstIndex", game.playerFirstIndex);
@@ -181,7 +185,7 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
     @Override
     protected void onResume() {
         super.onResume();
-      //  game.setIndex(savedValues.getInt("index", 52));
+        //  game.setIndex(savedValues.getInt("index", 52));
         game.setPlayerScore(savedValues.getInt("playerScore", 0));
         game.setDealerScore(savedValues.getInt("dealerScore",0));
         int playerIndexOne = savedValues.getInt("playerFirstIndex", 52);
@@ -195,34 +199,41 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
         int dealerThree = savedValues.getInt("dealerThirdCard", 52);
         int dealerFour = savedValues.getInt("dealerFourthCard", 52);
         int dealerFive = savedValues.getInt("dealerFifthCard", 52);
+
         dealerFirstCard = dealerOne;
         dealerSecondCard = dealerTwo;
         dealerThirdCard = dealerThree;
         dealerFourthCard = dealerFour;
         dealerFifthCard = dealerFive;
 
-
         cardsDealt = savedValues.getBoolean("cardsDealt", false);
-        if(dealerIndexOne != -1) {
+
+        if(dealerIndexOne != -1)
+        {
             dealerCardOne.setImageResource(images[dealerIndexOne]);
         }
 
         game.isBust = savedValues.getBoolean("busted", false);
         playerScoreTextView.setText(String.valueOf(savedValues.getInt("playerScore", 0)));
 
-        if(playerIndexOne != -1) {
+        if(playerIndexOne != -1)
+        {
             playerCardOne.setImageResource(images[playerIndexOne]);
         }
-        if(playerIndexTwo!= -1) {
+        if(playerIndexTwo!= -1)
+        {
             playerCardTwo.setImageResource(images[playerIndexTwo]);
         }
-        if(playerIndexThree!= -1) {
+        if(playerIndexThree!= -1)
+        {
             playerCardThree.setImageResource(images[playerIndexThree]);
         }
-        if(playerIndexFour != -1) {
+        if(playerIndexFour != -1)
+        {
             playerCardFour.setImageResource(images[playerIndexFour]);
         }
-        if(playerIndexFive!= -1) {
+        if(playerIndexFive!= -1)
+        {
             playerCardFive.setImageResource(images[playerIndexFive]);
         }
         game.setPlayerTurn(savedValues.getBoolean("playerTurn", true));
@@ -232,7 +243,7 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
     }
 
     //ARRAY OF IMAGES     HEARTS
-    int[] images = {R.drawable.ace_hearts, R.drawable.two_hearts, R.drawable.three_hearts, R.drawable.four_hearts, R.drawable.five_hearts, R.drawable.six_hearts, R.drawable.seven_hearts,
+    int[] images = { R.drawable.ace_hearts, R.drawable.two_hearts, R.drawable.three_hearts, R.drawable.four_hearts, R.drawable.five_hearts, R.drawable.six_hearts, R.drawable.seven_hearts,
             R.drawable.eight_hearts, R.drawable.nine_hearts, R.drawable.ten_hearts, R.drawable.jack_hearts, R.drawable.queen_hearts, R.drawable.king_hearts,
             //DIAMONDS
             R.drawable.ace_diamonds, R.drawable.two_diamonds, R.drawable.three_diamonds, R.drawable.four_diamonds, R.drawable.five_diamonds, R.drawable.six_diamonds, R.drawable.seven_diamonds,
@@ -249,7 +260,8 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
 
 
 
-    public void dealOnClick(View v){
+    public void dealOnClick(View v)
+    {
         //DEALING THE CARDS TO PLAYER
         newGameButton.callOnClick();
         cardsDealt = true; // ENABLES HIT BUTTON
@@ -261,9 +273,11 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
         hitButton.callOnClick(); // HIT
         game.endTurn(); //PLAYERS TURN
     }
+
     public void hitOnClick(View v)
     {
-        if(cardsDealt) {
+        if(cardsDealt)
+        {
             game.hit();
             displayGui();
         }
@@ -275,97 +289,107 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
     }
     public void holdOnClick(View v)
     {
-            count = 3;//RESETTING TURN COUNT AFTER HOLD IS PRESSED GOING TO 3 B/C 2 CARDS WERE DEALT
+        count = 3;//RESETTING TURN COUNT AFTER HOLD IS PRESSED GOING TO 3 B/C 2 CARDS WERE DEALT
         //THESE ARE USED TO INDICATE THAT THE TWO HAVE GONE AFTER THE INITIAL DEAL, SINCE THE DEAL SIMPLY CALLS HIT TWICE FOR EACH PLAYER
-            playerHasGone = true;
-            game.hold();
+        playerHasGone = true;
+        game.hold();
         cardsDealt = true;
-        while(game.getDealerScore()<winningAmount-4)
+        while(game.getDealerScore() < (winningAmount-4))
         {
-            if(game.getPlayersTurn() == false) {
+            if(game.getPlayersTurn() == false)
+            {
                 hitButton.callOnClick();
             }
 
         }
         dealerHasGone = true;
         game.endTurn();
-        if(!dealerWins && !playerWins) {
+        if(!dealerWins && !playerWins)
+        {
             displayGui();
         }
 
     }
+
+    /**
+     * User clicked to have aces as 11 instead of 1.
+     * @param v View object sent in by android library.
+     */
     public void highAcesOnClick(View v)
     {
         acesLowButton.setChecked(false);
         game.setAceHighButtonIsChecked(true);
-        if(playerHasAce  && acesHighButton.isChecked() && !tenAdded ) {
+        if(playerHasAce  && acesHighButton.isChecked() && !tenAdded )
+        {
             tenAdded = true;
             game.setPlayerScore(game.getPlayerScore() + 10);
         }
     }
+
     public void lowAcesOnClick(View v)
     {
         acesHighButton.setChecked(false);
     }
+
     public void newGameOnClick(View v)
     {
         //      RESET SCORES
-            game.setPlayerScore(0);
-            game.setDealerScore(0);
+        game.setPlayerScore(0);
+        game.setDealerScore(0);
 
         //DISPLAY RESET SCORES
-            playerScoreTextView.setText(String.valueOf(game.getPlayerScore()));
-            dealerScoreTextView.setText(String.valueOf(game.getDealerScore()));
+        playerScoreTextView.setText(String.valueOf(game.getPlayerScore()));
+        dealerScoreTextView.setText(String.valueOf(game.getDealerScore()));
 
         //RESET TURN COUNT
-            count = 1;
+        count = 1;
 
         // RESET CENTER CARD
-            game.setIndex(52); //53rd item in image array is card back
+        game.setIndex(52); //53rd item in image array is card back
 
         // RESET PLAYERS CARDS
-            playerCardOne.setImageResource(R.drawable.card_back_three);
-            playerCardTwo.setImageResource(R.drawable.card_back_three);
-            playerCardThree.setImageResource(R.drawable.card_back_three);
-            playerCardFour.setImageResource(R.drawable.card_back_three);
-            playerCardFive.setImageResource(R.drawable.card_back_three);
+        playerCardOne.setImageResource(R.drawable.card_back_three);
+        playerCardTwo.setImageResource(R.drawable.card_back_three);
+        playerCardThree.setImageResource(R.drawable.card_back_three);
+        playerCardFour.setImageResource(R.drawable.card_back_three);
+        playerCardFive.setImageResource(R.drawable.card_back_three);
 
         // RESET DEALERS CARDS
-            dealerCardOne.setImageResource(R.drawable.card_back_three);
-            dealerCardTwo.setImageResource(R.drawable.card_back_three);
-            dealerCardThree.setImageResource(R.drawable.card_back_three);
-            dealerCardFour.setImageResource(R.drawable.card_back_three);
-            dealerCardFive.setImageResource(R.drawable.card_back_three);
+        dealerCardOne.setImageResource(R.drawable.card_back_three);
+        dealerCardTwo.setImageResource(R.drawable.card_back_three);
+        dealerCardThree.setImageResource(R.drawable.card_back_three);
+        dealerCardFour.setImageResource(R.drawable.card_back_three);
+        dealerCardFive.setImageResource(R.drawable.card_back_three);
 
         // RESET CENTER CARD
-            centerCard.setImageResource(R.drawable.card_back_three);
+        centerCard.setImageResource(R.drawable.card_back_three);
 
         // RESET BUST
-            busted = false;
+        busted = false;
 
         // RESET DEAL
-            cardsDealt = false;
+        cardsDealt = false;
 
         // RESET CHECK FOR WINNER UTILITY VARIABLES
-            playerHasGone = false;
-            dealerHasGone = false;
+        playerHasGone = false;
+        dealerHasGone = false;
 
         // RESET WINNERS
-            dealerWins = false;
-            playerWins = false;
+        dealerWins = false;
+        playerWins = false;
 
         // RESET DEALERS HIDDEN CARDS
-            dealerSecondCard = -1;
-            dealerThirdCard = -1;
-            dealerFourthCard = -1;
-            dealerFifthCard = -1;
+        dealerSecondCard = -1;
+        dealerThirdCard = -1;
+        dealerFourthCard = -1;
+        dealerFifthCard = -1;
 
         // RESET PLAYERS ACES
-            playerHasAce = false;
-            tenAdded = false;
+        playerHasAce = false;
+        tenAdded = false;
 
         //RESET RADIO BUTTON
-            acesHighButton.setChecked(false);
+        acesHighButton.setChecked(false);
         //RESET TURN COUNT
         game.setPlayerTurnCount(0);
 
@@ -381,23 +405,27 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
             playerScoreTextView.setText("Dealer WINS!! player one busted at: " + String.valueOf(game.getPlayerScore()));
             dealerWins = true;
             dealerScoreTextView.setText(String.valueOf(game.getDealerScore()));
-            if(dealerSecondCard != -1) {
+            if(dealerSecondCard != -1)
+            {
                 dealerCardTwo.setImageResource(images[dealerSecondCard]);
             }
+
             if(dealerThirdCard != -1)
             {
                 dealerCardThree.setImageResource(images[dealerThirdCard]);
             }
+
             if(dealerFourthCard != -1)
             {
                 dealerCardFour.setImageResource(images[dealerFourthCard]);
             }
+
             if(dealerFifthCard != -1)
             {
                 dealerCardFour.setImageResource(images[dealerFifthCard]);
             }
         }
-        else if(game.getDealerScore()>winningAmount){
+        else if(game.getDealerScore() > winningAmount){
             busted = true;
             centerCard.setImageResource(R.drawable.dealer_bust);
             playerScoreTextView.setText("Player WINS!!!, player: " + game.getPlayerScore());
@@ -416,7 +444,7 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
             {
                 dealerCardFour.setImageResource(images[dealerFifthCard]);
             }
-      }
+        }
     }
     public void checkForWinner()
     {
@@ -543,80 +571,83 @@ public class Blackjack extends AppCompatActivity implements OnEditorActionListen
     public void displayGui()
     {
 
-            dealerScoreTextView.setText("??");
+        dealerScoreTextView.setText("??");
 
-            if (game.getPlayersTurn()) {
-                centerCard.setImageResource(images[game.getIndex()]);
-                switch(game.getIndex())
-                {
-                    case 0:
-                        game.setPlayerHasAce(true);
-                        playerHasAce = true;
-                        break;
-                    case 13:
-                        game.setPlayerHasAce(true);
-                        playerHasAce = true;
-                        break;
-                    case 26:
-                        game.setPlayerHasAce(true);
-                        playerHasAce = true;
-                        break;
-                    case 39:
-                        game.setPlayerHasAce(true);
-                        playerHasAce = true;
-                        break;
-                    default:
-                        break;
-                }
-                if(acesHighButton.isChecked() && playerHasAce)
-                {
-                    playerScoreTextView.setText(String.valueOf(game.getPlayerScore() +10));
-                }
-                else {
-                    playerScoreTextView.setText(String.valueOf(game.getPlayerScore()));
-                }
-
-                if (count == 1) {
-                    playerCardOne.setImageResource(images[game.getIndex()]);
-                    count++;
-                } else if (count == 2) {
-                    playerCardTwo.setImageResource(images[game.getIndex()]);
-                    count++;
-                } else if (count == 3) {
-                    playerCardThree.setImageResource(images[game.getIndex()]);
-                    count++;
-                } else if (count == 4) {
-                    playerCardFour.setImageResource(images[game.getIndex()]);
-                    count++;
-                } else if (count == 5) {
-                    playerCardFive.setImageResource(images[game.getIndex()]);
-                    count = 1;
-                }
-
-            } else {
-
-                if (count == 1) {
-                    dealerCardOne.setImageResource(images[game.getIndex()]);
-                    dealerFirstCard = game.getIndex();
-                    count++;
-                }
-                else if (count == 2) {
-                     dealerSecondCard = game.getIndex();
-                     count++;
-                 }
-                else if (count == 3) {
-                     dealerThirdCard = game.getIndex();
-                     count++;
-                 }
-                else if (count == 4) {
-                     dealerFourthCard = game.getIndex();
-                     count++;
-                 }
-                else if (count == 5) {
-                     dealerFifthCard = game.getIndex();
-                     count = 1;
-                }
+        if (game.getPlayersTurn())
+        {
+            centerCard.setImageResource(images[game.getIndex()]);
+            switch(game.getIndex())
+            {
+                case 0:
+                    game.setPlayerHasAce(true);
+                    playerHasAce = true;
+                    break;
+                case 13:
+                    game.setPlayerHasAce(true);
+                    playerHasAce = true;
+                    break;
+                case 26:
+                    game.setPlayerHasAce(true);
+                    playerHasAce = true;
+                    break;
+                case 39:
+                    game.setPlayerHasAce(true);
+                    playerHasAce = true;
+                    break;
+                default:
+                    break;
             }
+
+            if(acesHighButton.isChecked() && playerHasAce)
+            {
+                playerScoreTextView.setText(String.valueOf(game.getPlayerScore() +10));
+            }
+            else
+            {
+                playerScoreTextView.setText(String.valueOf(game.getPlayerScore()));
+            }
+
+            if (count == 1) {
+                playerCardOne.setImageResource(images[game.getIndex()]);
+                count++;
+            } else if (count == 2) {
+                playerCardTwo.setImageResource(images[game.getIndex()]);
+                count++;
+            } else if (count == 3) {
+                playerCardThree.setImageResource(images[game.getIndex()]);
+                count++;
+            } else if (count == 4) {
+                playerCardFour.setImageResource(images[game.getIndex()]);
+                count++;
+            } else if (count == 5) {
+                playerCardFive.setImageResource(images[game.getIndex()]);
+                count = 1;
+            }
+
+        } else {
+
+            if (count == 1) {
+                dealerCardOne.setImageResource(images[game.getIndex()]);
+                dealerFirstCard = game.getIndex();
+                count++;
+            }
+            else if (count == 2) {
+                dealerSecondCard = game.getIndex();
+                count++;
+            }
+            else if (count == 3) {
+                dealerThirdCard = game.getIndex();
+                count++;
+            }
+            else if (count == 4) {
+                dealerFourthCard = game.getIndex();
+                count++;
+            }
+            else if (count == 5) {
+                dealerFifthCard = game.getIndex();
+                count = 1;
+            }
+        }
         checkForBust();
         if(busted)
         {

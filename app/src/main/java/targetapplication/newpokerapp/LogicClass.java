@@ -1,4 +1,4 @@
-package talaba.blackjack.com.blackjack;
+package targetapplication.newpokerapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,13 +10,13 @@ import java.util.Random;
  */
 public class LogicClass extends AppCompatActivity {
 
-    //makeing an array of booleans so i can keep track of which cards were drawn
+    //making an array of booleans so i can keep track of which cards were drawn
     private boolean aceHearts, aceSpades, aceClubs , aceDiamonds, twoHearts,twoSpades,twoClubs,twoDiamonds,threeHearts, threeClubs,threeSpades, threeDiamonds, fourHearts, fourClubs, fourSpades, fourDiamonds,
             fiveHearts, fiveClubs, fiveSpades, fiveDiamonds, sixHearts, sixClubs, sixSpades, sixDiamonds,sevenHearts, sevenClubs, sevenSpades, sevenDiamonds, eightHearts, eightClubs, eightSpades, eightDiamonds,
             nineHearts, nineClubs, nineSpades, nineDiamonds, tenHearts, tenClubs ,tenSpades, tenDiamonds, jackHearts, jackClubs, jackSpades, jackDiamonds, queenHearts, queenClubs, queenSpades, queenDiamonds,
             kingHearts, kingClubs, kingSpades, kingDiamonds;
     boolean[] replicaImages={aceHearts, twoHearts, threeHearts, fourHearts, fiveHearts, sixHearts, sevenHearts, eightHearts, nineHearts, tenHearts, jackHearts, queenHearts,kingHearts, aceDiamonds
-    , twoDiamonds, threeDiamonds, fourDiamonds, fiveDiamonds, sixDiamonds, sevenDiamonds, eightDiamonds, nineDiamonds, tenDiamonds, jackDiamonds, queenDiamonds, kingDiamonds, aceSpades, twoSpades, threeSpades,
+            , twoDiamonds, threeDiamonds, fourDiamonds, fiveDiamonds, sixDiamonds, sevenDiamonds, eightDiamonds, nineDiamonds, tenDiamonds, jackDiamonds, queenDiamonds, kingDiamonds, aceSpades, twoSpades, threeSpades,
             fourSpades, fiveSpades, sixSpades, sevenSpades, eightSpades, nineSpades, tenSpades, jackSpades, queenSpades, kingSpades, aceClubs, twoClubs, threeClubs, fourClubs, fiveClubs, sixClubs, sevenClubs,
             eightClubs, nineClubs, tenClubs, jackClubs, queenClubs, kingClubs};
 
@@ -87,8 +87,9 @@ public class LogicClass extends AppCompatActivity {
     public void hit()
     {
         //RANDOM NUMBER IS USED FOR IMAGE INDEXING AS WELL AS SCORING
-         createRandomNumber();
-        if(playersTurn) {
+        createRandomNumber();
+        if(playersTurn)
+        {
             playerScore += getValueOfCard(randomNum);
             playerTurnCount++;
 
@@ -119,7 +120,9 @@ public class LogicClass extends AppCompatActivity {
             {
                 isBust = true;
             }
-        }else{
+        }
+        else
+        {
             dealerScore += getValueOfCard(randomNum);
             dealerFirstIndex = randomNum;
             if(dealerScore > winningScore)
@@ -151,12 +154,12 @@ public class LogicClass extends AppCompatActivity {
             int tmpInt;
             while(replicaImages[firstRandom]==false)
             {
-              tmpInt= rand.nextInt(52);
+                tmpInt = rand.nextInt(52);
                 firstRandom = tmpInt;
             }
             randomNum = firstRandom;
             imageIndex = randomNum;
-            replicaImages[firstRandom] =false;
+            replicaImages[firstRandom] = false;
 
         }
     }
@@ -167,9 +170,12 @@ public class LogicClass extends AppCompatActivity {
 
         int value = (randomNumber%13) + 1;
         Log.i("hello", String.valueOf(value));
-        if(value<10) {
+        if(value<10)
+        {
             return value;
-        }else{
+        }
+        else
+        {
             return 10;
         }
     }
